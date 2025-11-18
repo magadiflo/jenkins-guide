@@ -17,3 +17,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y docker-ce-cli docker-compose-plugin && \
     rm -rf /var/lib/apt/lists/*
+
+# Como el GID es 0 (root), agregaremos al usuario jenkins al grupo root
+RUN usermod -aG root jenkins
+
+USER jenkins
